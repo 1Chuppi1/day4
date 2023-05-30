@@ -8,10 +8,11 @@ namespace day3._1
 {
     internal class Employee
     {
+        public int Id { get; private set; }
         public string FullName { get; set; }
         public int Department { get; set; }
         public double Salary { get; set; }
-        public int Id { get; private set; }
+        public int ID { get; internal set; }
 
         private static int counter = 0;
         public Employee(string fullName, int department, double salary)
@@ -143,6 +144,6 @@ namespace day3._1
             return string.Format("Сотрудник {0}: Зарплата - {1}", FullName, Salary);
         }
 
-        
+
     }
 }
