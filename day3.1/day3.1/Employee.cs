@@ -12,7 +12,7 @@ namespace day3._1
         public string FullName { get; set; }
         public int Department { get; set; }
         public double Salary { get; set; }
-        public int ID { get; internal set; }
+        
 
         private static int counter = 0;
         public Employee(string fullName, int department, double salary)

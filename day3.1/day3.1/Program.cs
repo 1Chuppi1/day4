@@ -9,46 +9,6 @@ namespace day3._1
 
     class Program
     {
-
-        //метод, который принимает число в качестве параметра и выводит в консоль всех сотрудников с зарплатой меньше данного числа
-        static void PrintEmployeesWithSalaryLessThan(Employee[] employees2, double salary)
-        {
-            foreach (Employee employee in employees2)
-            {
-                if (employee.Salary < salary)
-                {
-                    Console.WriteLine($"ID: {employee.Id}, ФИО: {employee.FullName}, Зарплата: {employee.Salary}");
-                }
-            }
-        }
-
-        //метод для вывода всех сотрудников с зарплатой больше (или равно) данного числа:
-        static void PrintEmployeesWithSalaryGreaterThan(int salary, Employee[] employees2)
-        {
-            foreach (Employee employee in employees2)
-            {
-                if (employee.Salary >= salary)
-                {
-                    Console.WriteLine($"ID: {employee.ID}, ФИО: {employee.FullName}, Зарплата: {employee.Salary}");
-                }
-            }
-        }
-
-         static void PrintEmployeesWithSalaryGreaterThan(double inputSalary)
-        {
-            Console.WriteLine($"");
-        }
-
-        private static void PrintEmployeesWithSalaryLessThan(double inputSalary)
-        {
-            Console.WriteLine($"");
-        }
-
-
-
-
-
-
         // Метод для поиска сотрудника с минимальной зарплатой в определенном отделе
         static Employee GetEmployeeWithMinSalary(Employee[] employees, int department)
         {
@@ -122,7 +82,20 @@ namespace day3._1
         }
         static void Main(string[] args)
         {
-
+            Console.WriteLine("Нажмите Enter, чтобы узнать номера заданий.");
+            Console.ReadLine();
+            Console.WriteLine("1.Общая зарплата сотрудников.");
+            Console.WriteLine("2.Минимальная и максимальна зарплата. ");
+            Console.WriteLine("3.Средняя зарплата. ");
+            Console.WriteLine("4.Кол-во сотрудников. ");
+            Console.WriteLine("5.Список всех сотрудников. ");
+            Console.WriteLine("6.Изменение зарплаты под процент.");
+            Console.WriteLine("7.Минимальная, максимальная и средняя зарплата по отделам. ");
+            Console.WriteLine("8.Зарплата менее 1500 или зарплата более или равна 1500. ");
+            Console.WriteLine("");
+            Console.WriteLine("Если вы выбрали задание для проверки: Нажмите Enter");
+            Console.ReadLine();
+            Console.Clear();
 
             Employee.AddEmployee(new Employee("блоб джоб", 1, 1000));
             Employee.AddEmployee(new Employee("Курл Чарл", 2, 2000));
@@ -130,32 +103,42 @@ namespace day3._1
             Employee.AddEmployee(new Employee("Оля Лун", 4, 4000));
             Employee.AddEmployee(new Employee("Вон Там", 5, 5000));
 
-            Console.Write("Введите номер задания от 1 до 7: ");
+            Console.Write("Введите номер задания от 1 до 8: ");
             int zad = int.Parse(Console.ReadLine());
             switch (zad)
             {
                 case 1:
+                    Console.WriteLine("==========================================================");
                     Console.WriteLine("Общая зарплата сотрудников: ");
                     Console.WriteLine("Total Salary: {0}", Employee.GetTotalSalary());
+                    Console.WriteLine("==========================================================");
                     break;
                 case 2:
+                    Console.WriteLine("==========================================================");
                     Console.WriteLine("Минимальная и максимальна зарплата:");
                     Console.WriteLine("Employee with Min Salary: {0}", Employee.GetEmployeeWithMinSalary().FullName);
                     Console.WriteLine("Employee with Max Salary: {0}", Employee.GetEmployeeWithMaxSalary().FullName);
+                    Console.WriteLine("==========================================================");
                     break;
                 case 3:
-                    Console.WriteLine("Средняя зарплата: ");
-                    Console.WriteLine("Average Salary: {0}", Employee.GetAvgSalary());
+                    Console.WriteLine("==========================================================");
+                    Console.WriteLine("Средняя зарплата сотрудников: {0}", Employee.GetAvgSalary());
+                    Console.WriteLine("==========================================================");
                     break;
                 case 4:
+                    Console.WriteLine("==========================================================");
                     Console.WriteLine("Кол-во сотрудников: ");
                     Console.WriteLine("Number of Employees: {0}", Employee.GetNumOfEmployees());
+                    Console.WriteLine("==========================================================");
                     break;
                 case 5:
+                    Console.WriteLine("==========================================================");
                     Console.WriteLine("Список всех сотрудников: ");
                     Console.WriteLine("All Full Names:");
+                    Console.WriteLine("==========================================================");
                     break;
                 case 6:
+                    Console.WriteLine("==========================================================");
                     // Создаем массив сотрудников
                     Employee[] employees1 = new Employee[]
                     {
@@ -174,7 +157,7 @@ namespace day3._1
                         emp.IncreaseSalary(percentage);
                         Console.WriteLine(emp.ToString());
                     }
-
+                    Console.WriteLine("==========================================================");
                     Console.ReadKey();
                     break;
 
@@ -191,10 +174,11 @@ namespace day3._1
                         new Employee("Ест Жи",7, 10600),
 
                     };
+                    Console.WriteLine("==========================================================");
                     // Считываем номер отдела
                     Console.Write("Введите номер отдела (1-5): ");
                     int number = int.Parse(Console.ReadLine());
-
+                    Console.WriteLine("==========================================================");
                     // Вызываем нужный метод в зависимости от номера отдела
                     switch (number)
                     {
@@ -206,6 +190,7 @@ namespace day3._1
                             double percent = double.Parse(Console.ReadLine());
                             IndexSalary(employees, 1, percent);
                             PrintEmployees(employees, 1);
+                            Console.WriteLine("==========================================================");
                             break;
                         case 2:
                             Console.WriteLine("Сотрудник с минимальной зарплатой: " + GetEmployeeWithMinSalary(employees, 2).FullName);
@@ -215,6 +200,7 @@ namespace day3._1
                             percent = double.Parse(Console.ReadLine());
                             IndexSalary(employees, 2, percent);
                             PrintEmployees(employees, 2);
+                            Console.WriteLine("==========================================================");
                             break;
                         case 3:
                             Console.WriteLine("Сотрудник с минимальной зарплатой: " + GetEmployeeWithMinSalary(employees, 3).FullName);
@@ -224,6 +210,7 @@ namespace day3._1
                             percent = double.Parse(Console.ReadLine());
                             IndexSalary(employees, 3, percent);
                             PrintEmployees(employees, 3);
+                            Console.WriteLine("==========================================================");
                             break;
                         case 4:
                             Console.WriteLine("Сотрудник с минимальной зарплатой: " + GetEmployeeWithMinSalary(employees, 4).FullName);
@@ -233,6 +220,7 @@ namespace day3._1
                             percent = double.Parse(Console.ReadLine());
                             IndexSalary(employees, 4, percent);
                             PrintEmployees(employees, 4);
+                            Console.WriteLine("==========================================================");
                             break;
                         case 5:
                             Console.WriteLine("Сотрудник с минимальной зарплатой: " + GetEmployeeWithMinSalary(employees, 5).FullName);
@@ -242,6 +230,7 @@ namespace day3._1
                             percent = double.Parse(Console.ReadLine());
                             IndexSalary(employees, 5, percent);
                             PrintEmployees(employees, 5);
+                            Console.WriteLine("==========================================================");
                             break;
                         default:
                             Console.WriteLine("Неверный номер отдела");
@@ -263,22 +252,35 @@ namespace day3._1
                         new Employee("Ест Жи",7, 10600),
 
                     };
-
+                    Console.WriteLine("==========================================================");
+                    Console.WriteLine("Сотрудники у которых зарплата больше или равна 1500.");
                     double inputSalary = 1500;
-                    Console.WriteLine($"Сотрудники со зарплатой меньше {inputSalary}:");
-                    PrintEmployeesWithSalaryLessThan(inputSalary);
+                    foreach (Employee employee in employees2)
+                    {
+                        if (employee.Salary >= inputSalary)
+                        {
+                            
+                            Console.WriteLine($"ID: {employee.Department}, ФИО: {employee.FullName}, Зарплата: {employee.Salary}");
+                        }
+                    }
+                    Console.WriteLine("==========================================================");
+                    Console.WriteLine($"Сотрудники со зарплатой менее 1500.");
+                    foreach (Employee employee in employees2)
+                    {
+                        if (employee.Salary < inputSalary)
+                        {
+                            
+                            Console.WriteLine($"ID: {employee.Department}, ФИО: {employee.FullName}, Зарплата: {employee.Salary}");
+                        }
+                    }
+                    Console.WriteLine("==========================================================");
+                    break;
 
-                    Console.WriteLine($"Сотрудники со зарплатой больше или равно {inputSalary}:");
-                    PrintEmployeesWithSalaryGreaterThan(inputSalary);
+                default:
+                    Console.WriteLine("Неверный номер задания");
                     break;
             }
-
-
             Console.ReadKey();
-
         }
-
-        
     }
-
 }
